@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>Video Statistics</title>
+    <style>
+      body {
+  background-color: black;
+  color: white;
+  font-family: "helvetica"!important;
+  font-weight: 600!important;
+}
+
+.video-background {
+  height: 720px;
+  width: 1280px;
+  filter: blur(7px)brightness(0.4);
+}
+.odometer {
+  font-family: "helvetica";
+  font-weight: 600;
+}
+
+.card1 {
+  margin-top: -35px;
+}
+
+.card2 {
+  margin-top: -35px;
+}
+
+.video-avatar {
+  height: 240px;
+  width: 420px;
+  border-radius: 40px;
+}
+
+.video-name {
+  font-family: "Helvetica";
+  font-weight: 600;
+  color: white;
+  font-size: 74px;
+  top: -15px;
+  margin-left: 30px;
+  overflow: hidden;
+  position: absolute;
+  border-radius: 20px;
+  height: 90px;
+  width: 120vw;
+}
+
+.views-icon {
+  position: absolute;
+  margin-top: 25px;
+}
+
+.views {
+  font-family: "Helvetica";
+  font-size: 70px;
+  color: rgb(255, 249, 164);
+  top: -10px;
+  margin-left: 5px;
+}
+
+.likes {
+  font-family: "Helvetica";
+  font-size: 70px;
+  color: #7f7;
+  margin-left: 5px;
+}
+
+.count {
+  font-family: "helvetica";
+  font-weight: 600;
+  font-size: 90px;
+  color: white;
+  margin-top: -10px;
+  margin-left: 80px;
+}
+
+.count1 {
+  font-family: "helvetica";
+  font-weight: 600;
+  font-size: 290px;
+  color: white;
+  top: -45px;
+  margin-left: 5px;
+}
+
+.count2 {
+  font-family: "helvetica";
+  font-weight: 600;
+  font-size: 290px;
+  top: -15px;
+  margin-left: 5px;
+}
+    </style>
+    <link href="../odometer/odometer.css" rel="stylesheet"/>
+    <link href='https://fonts.googleapis.com/css?family=Roboto' rel='stylesheet'>
+    <link href='https://fonts.googleapis.com/css?family=Ubuntu' rel='stylesheet'>
+    <script src="../odometer/odometer.js"></script>
+    <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+    <script src="https://code.highcharts.com/10.3.3/highcharts.js"></script>
+  </head>
+
+  <body>
+    <div>
+      <div>
+          <img class="video-avatar" id="avatar" alt="">
+          <span class="video-name" id="name" onclick="search()">Loading...</span>
+            <span style="position: absolute; top: -250px; padding-top: -120px;"></span><iconify-icon icon="mdi:youtube"  style="color: red; font-size: 80px; position: absolute; margin-top: 80px!important; margin-left: 30px;" ></iconify-icon></span>
+            <span style="position: absolute; top: -250px; padding-top: -120px;"><iconify-icon icon="twemoji:fir"  style=" font-size: 60px; position: absolute; margin-top: 340px!important; margin-left: 120px"></iconify-icon></span>
+    </div>
+      <br>
+      <div class="card1">
+         <h1 class="views">Views<iconify-icon icon="mdi:eye" style="margin-top: 12px; margin-left: 10px; position: absolute;"></iconify-icon> <span id="views-api" class="odometer count">0</span></h1>
+         <span class="odometer count1" id="views">0</span>
+    </div>
+      <br>
+         <div class="card2">
+           <h1 class="likes">Likes<iconify-icon icon="material-symbols:thumb-up-sharp" style="margin-top: 10px; margin-left: 3px; position: absolute;"></iconify-icon></h1>
+           <span class="odometer count2" id="likes">0</span>
+         </div>
+        </div>
+        <img class="video-background" id="background" alt="">
+  </body>
+
+  <script>
+      const urlParams = new URLSearchParams(window.location.search);
+    var id = urlParams.get("id") || "";
+    var count = 0;
+
+    fetch(`https://mixerno.space/api/youtube-video-counter/user/${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        document.getElementById("name").textContent = data.user[0].count;
+        document.getElementById("avatar").src = data.user[1].count;
+        document.getElementById("background").src = data.user[1].count;
+      });
+
+      function data() {
+      fetch(`https://mixerno.space/api/youtube-video-counter/user/${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          count = data.counts[0].count;
+          count2 = data.counts[3].count;
+          count3 = data.counts[2].count;
+        });
+    }
+
+    function render() {
+      document.getElementById("views").innerHTML = count;
+      document.getElementById("likes").innerHTML = count2;
+      document.getElementById("views-api").innerHTML = count3;
+    };
+
+    setInterval(() => {
+      data();
+      render();
+    }, 2000);
+
+
+    function search() {
+  const prompt = window.prompt("Enter channel Name, ID, or URL.");
+  if (prompt) {
+    fetch(`https://livecounts.xyz/api/youtube-live-view-count/search/${prompt}`)
+      .then((res) => res.json())
+      .then((data) => {
+        window.location.href = "?id=" + data.results[0].id;
+        idName = data.results[0].id;
+        genGraph();
+      });
+  }
+};
+  </script>
+</html>

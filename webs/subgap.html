@@ -1,0 +1,169 @@
+
+<!DOCTYPE html>
+
+<html>
+    <head>
+        <title>Sub Gap</title>
+        <link href="../odometer/odometer.css" rel="stylesheet">
+        <script src="../odometer/odometer.js"></script>
+        <style>
+        body {
+            background-color: black;
+            font-family: "roboto medium";
+            text-align: center;
+            align-items: center;
+            color: white;
+        }
+
+        .odometer {
+            font-size: 150px;
+        }
+
+        .text {
+            color: yellow;
+            font-size: 50px;
+            margin-top: -3px;
+            font-family: "ubuntu medium";
+        }
+
+        .chart {
+            width: 100%;
+            height: 150px;
+        }
+
+        .huh {
+          font-size: 50px;
+          margin-top: 5px;
+          position: fixed;
+        }
+      </style>
+      <script src="https://code.iconify.design/iconify-icon/1.0.7/iconify-icon.min.js"></script>
+      <script src="https://code.highcharts.com/10.3.3/highcharts.js"></script>
+    </head>
+
+    <body>
+        <span id="count" class="odometer">0</span>
+        <h1 class="text">Difference<iconify-icon icon="material-symbols-light:compare-arrows" class="huh"></iconify-icon></h1>
+        <div id="hart" class="chart"></div>
+        <script>
+            const urlParams = new URLSearchParams(window.location.search);
+    var id = urlParams.get("id") || "UCVKChdTNU4tiSVv0-HL3J3w";
+    var count = 0;
+      /// DaFuq!?Boom! Sub Count
+      function data() {
+        fetch(`https://mixerno.space/api/youtube-channel-counter/user/UCn_FAXem2-e3HQvmK-mOH4g`)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          count = data.counts[0].count;
+          count2 = data.estViewCount;
+        });
+    }
+    /// Other User
+    function data1() {
+      fetch(`https://mixerno.space/api/youtube-channel-counter/user/UC0pjYdWYOiD3-toOOyZZApw`)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          count1 = data.counts[0].count;
+          count2 = data.estViewCount;
+        });
+    }
+
+    ///Sub Gap Counter
+    function render() {
+      document.getElementById("count").innerHTML = count - count1;
+      if (chart.series[0].points.length == 3600)
+          chart.series[0].data[0].remove();
+        chart.series[0].addPoint([
+          Date.now(),
+          Math.floor(count - count1),
+        ]);
+    };
+
+    setInterval(() => {
+      data();
+      data1();
+      render();
+    }, 2000);
+
+    const chart = new Highcharts.chart({
+            chart: {
+                renderTo: "chart",
+                type: "line",
+                zoomType: "x",
+                backgroundColor: "transparent",
+                plotBorderColor: "transparant",
+                Animation: true,
+            },
+            title: {
+                text: "",
+            },
+            xAxis: {
+                type: "datetime",
+                tickPixelInterval: 500,
+                visible: false,
+            },
+            yAxis: {
+                visible: false,
+            },
+            credits: {
+                text: "",
+                enabled: true,
+                href: "kys = keep yourself safe",
+            },
+                  tooltip: {
+        shared: true,
+        formatter: function () {
+          var index = this.points[0].series.xData.indexOf(this.x);
+          var lastY = this.points[0].series.yData[index - 1];
+          var dif = this.y - lastY;
+          var r =
+            Highcharts.dateFormat("%A %b %e, %H:%M:%S", new Date(this.x)) +
+            '<br><span style="color:black">\u25CF </span>' +
+            this.points[0].series.name +
+            ": <b>" +
+            Highcharts.numberFormat(this.y, 0);
+          if (dif < 0) {
+            r +=
+              '<span style="color:#ff0000;font-weight:bold;"> (' +
+              Highcharts.numberFormat(dif, 0) +
+              ")</span>";
+          }
+          if (dif > 0) {
+            r +=
+              '<span style="color:#00bb00;font-weight:bold;"> (+' +
+              Highcharts.numberFormat(dif, 0) +
+              ")</span>";
+          }
+          return r;
+        },
+      },
+            series: [
+              {
+                showInLegend: false,
+                name: "Difference",
+                marker: { enabled: false },
+                color: "#FFFF00",
+                lineColor: "#FFFF00",
+                lineWidth: 5,
+              },
+            ],
+        });
+
+    
+    function search() {
+  const prompt = window.prompt("Enter channel Name, ID, or URL.");
+  if (prompt) {
+    fetch(`https://livecounts.xyz/api/youtube-live-subscriber-count/search/${prompt}`)
+      .then((res) => res.json())
+      .then((data) => {
+        window.location.href = "?id=" + data.results[0].id;
+        idName = data.results[0].id;
+        genGraph();
+      });
+  }
+};
+        </script>
+    </body>
+</html>

@@ -1,0 +1,120 @@
+<html>
+  <head>
+    <style>
+      body {
+  background-color: black;
+  font-family: "roboto medium";
+  color: white;
+}
+
+.container {
+  text-align: center;
+}
+
+.Time {
+  text-align: center;
+  margin-left: -150px;
+  margin-top: -20px;
+}
+
+.text {
+  font-size: 50px;
+}
+
+.hours {
+  font-size: 120px;
+  margin-left: -370px;
+}
+
+.minutes {
+  position: absolute;
+  font-size: 120px;
+  margin-top: -164px;
+  margin-left: -80px;
+}
+
+.seconds {
+  position: absolute;
+  font-size: 120px;
+  margin-top: -163px;
+  margin-left: 90px;
+}
+
+.session {
+  position: absolute;
+  font-size: 120px;
+  margin-left: 250px;
+  margin-top: -163px;
+}
+
+.spacer1 {
+  font-size: 80px;
+  margin-top: -130px;
+  margin-left: -190px;
+}
+
+.spacer2{
+  font-size: 80px;
+  margin-top: -150px;
+  margin-left: 141px;
+}
+
+
+    </style>
+  </head>
+
+  <body>
+    <div class="container">
+      <div class="Date">
+        <span id="date" class="roboto text">0000/00/00</span>
+      </div>
+      <div class="Time">
+        <span id="hr" class="hours odometer">00</span>
+        <h1 class="spacer1">:</h1>
+        <span id="min" class="minutes odometer">00</span>
+        <h1 class="spacer2">:</h1>
+        <span id="sec" class="seconds odometer">00</span>
+        <span id="session" class="session">AM</span>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    function currentTime() {
+  let date = new Date(); 
+  let year = date.getFullYear();
+  let month = date.getMonth();
+  let day = date.getDate();
+  let hh = date.getHours();
+  let mm = date.getMinutes();
+  let ss = date.getSeconds();
+  let session = "AM";
+
+  if(hh == 0){
+      hh = 12;
+  }
+  if(hh > 12){
+      hh = hh - 12;
+      session = "PM";
+   }
+   
+   hh = (hh < 10) ? "0" + hh : hh;
+   mm = (mm < 10) ? "0" + mm : mm;
+   ss = (ss < 10) ? "0" + ss : ss;
+    
+   let datea = year + "/" + month + "/" + day;
+   let time = hh;
+   let time1 = mm;
+   let time2 =  ss;
+   let time3 = session;
+
+  document.getElementById("date").innerText = datea; 
+  document.getElementById("hr").innerText = time; 
+  document.getElementById("min").innerText = time1; 
+  document.getElementById("sec").innerText = time2; 
+  document.getElementById("session").innerText = time3; 
+  let t = setTimeout(function(){ currentTime() }, 1000);
+}
+currentTime();
+  </script>
+</html>

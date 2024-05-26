@@ -1,0 +1,112 @@
+<!DOCTYPE HTML>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+  .real {
+    color: white;
+    font-family: "ubuntu medium";
+    text-align: center;
+    height: 180px;
+    margin-top: -180px;
+  }
+
+  .red {
+    color: red;
+  }
+
+  .dd {
+    font-size: 250px;
+  }
+
+  .hh {
+    font-size: 250px;
+    margin-left: 65px;
+  }
+
+  .mm {
+    font-size: 250px;
+    margin-left: 65px;
+  }
+
+  .ss {
+    font-size: 250px;
+    margin-left: 65px;
+  }
+
+  .a {
+    position: absolute;
+    font-size: 220px;
+    margin-top: 159px;
+    margin-left: -3px;
+  }
+
+  .text {
+    font-size: 40px;
+    margin-top: 290px;
+    color: white;
+    font-family: "roboto";
+  }
+
+  .title {
+    font-size: 60px;
+    color: white;
+    font-family: "ubuntu medium";
+  }
+</style>
+<link href="../css/countdown8.css" rel="stylesheet">
+<link href="../odometer/odometer2.css" rel="stylesheet">
+<script src="../odometer/odometer2.js"></script>
+</head>
+<body>
+
+  <span class="title">TADC 3 IN:</span>
+<div class="real">
+  <h1 class="odometer dd" id="dd">0</h1>
+  <span class="a">:</span>
+  <h1 class="odometer hh" id="hh">0</h1>
+  <span class="a">:</span>
+  <h1 class="odometer mm" id="mm">0</h1>
+  <span class="a">:</span>
+  <h1 class="odometer ss red" id="ss">0</h1>
+</div>
+<h1 class="text">Days : Hours : Minutes : Seconds</h1>
+
+<script>
+// Set the date we're counting down to
+var countDownDate = new Date("Feb 19, 2024 10:30:00").getTime();
+
+// Update the count down every 1 second
+var x = setInterval(function() {
+
+  // Get today's date and time
+  var now = new Date().getTime();
+    
+  // Find the distance between now and the count down date
+  var distance = countDownDate - now;
+    
+  // Time calculations for days, hours, minutes and seconds
+  var days = Math.floor(distance / (1000 * 60 * 60 * 24));
+  var hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+  var minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+  var seconds = Math.floor((distance % (1000 * 60)) / 1000);
+    
+  // Output the result in an element with id="demo"
+  document.getElementById("dd").innerHTML = days;
+  document.getElementById("hh").innerHTML =hours;
+  document.getElementById("mm").innerHTML = minutes;
+  document.getElementById("ss").innerHTML =  seconds;
+
+  // If the count down is over, write some text 
+  if (distance < 2) {
+    clearInterval(x);
+    document.getElementById("dd").innerHTML = "0";
+    document.getElementById("hh").innerHTML = "0";
+    document.getElementById("mm").innerHTML = "0";
+    document.getElementById("ss").innerHTML = "0";
+  }
+}, 1000);
+</script>
+
+</body>
+</html>
