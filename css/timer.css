@@ -1,0 +1,104 @@
+body {
+  background-color: black;
+  color: white;
+  font-family: "Roboto medium";
+}
+
+.timer {
+  text-align: center;
+  margin-top: -20px;
+}
+
+.container {
+  text-align: center;
+}
+
+.bottom {
+  text-align: center;
+  margin-top: -10px;
+}
+
+.odometer {
+  font-family: "roboto";
+  font-weight: 500;
+  color: white;
+  margin-top: -53px;
+  padding: 10px;
+}
+
+.days {
+  font-size: 120px;
+  margin-left: -20px;
+}
+
+.hours {
+  font-size: 120px;
+  margin-left: -10px;
+}
+
+.minutes {
+  font-size: 120px;
+  margin-left: 10px;
+}
+
+.seconds {
+  font-size: 120px;
+  color: red;
+}
+
+.space1 {
+  font-size: 120px;
+  font-family: "roboto medium";
+}
+
+.space2 {
+  font-size: 120px;
+  font-family: "roboto medium";
+}
+
+.space3 {
+  font-size: 120px;
+  font-family: "roboto medium";
+}
+
+.spacer {
+  font-size: 30px;
+  font-family: "roboto medium";
+}
+
+.timerTitle {
+  text-align: center;
+  font-family: "roboto medium";
+  font-size: 40px;
+  color: white;
+}
+
+.dd {
+  font-family: "roboto medium";
+  font-size: 30px;
+  padding: 35px;
+}
+
+.card1 {
+  margin-left: -50.5vw;
+  margin-top: 250px;
+  position: relative;
+}
+
+.card2 {
+  margin-left: -20.5vw;
+  margin-top: -167px;
+  position: relative;
+}
+
+.card3 {
+  margin-left: 13.5vw;
+  margin-top: -167px;
+  position: relative;
+}
+
+.card4 {
+  margin-left: 51.5vw;
+  margin-top: -115px;
+  position: relative;
+}

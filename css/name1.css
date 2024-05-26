@@ -1,0 +1,33 @@
+body {
+  background-color: black;
+  color: white;
+}
+
+.name {
+  font-size: 40px;
+  font-family: "roboto medium";
+}
+
+.handle {
+  position: absolute;
+  font-size: 25px;
+  margin-left: 25%;
+  font-family: "roboto medium";
+  color: white;
+  margin-top: -50px;
+
+}
+
+.odometer {
+  position: absolute;
+  font-size: 30px;
+  margin-top: -73px;
+  margin-left: 190px;
+}
+
+.a {
+  font-family: "ubuntu light";
+  font-size: 25px;
+  margin-top: -29px;
+  margin-left: 100px;
+}

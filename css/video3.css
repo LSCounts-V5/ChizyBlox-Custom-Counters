@@ -1,0 +1,90 @@
+body {
+  background-color: black;
+  color: white;
+  font-family: "roboto medium";
+  text-align: center;
+  align-items: center;
+}
+
+.video-background {
+  height: 290px;
+  width: 530px;
+  margin-top: 0px;
+  filter: blur(0.3px)brightness(0.2);
+}
+.odometer {
+  font-family: "roboto medium";
+}
+
+.card1 {
+  text-align: center;
+}
+
+.card2 {
+  text-align: center;
+}
+
+.video-avatar {
+  height: 80px;
+  width: 160px;
+  border-radius: 8px;
+}
+
+.video-name {
+  font-family: "ubuntu light";
+  color: white;
+  font-size: 20px;
+  text-align: center;
+  margin-left: -00px;
+}
+
+.views {
+  font-family: "roboto";
+  font-weight: 100;
+  font-size: 15px;
+  color: white;
+}
+
+.likes {
+  font-family: "roboto";
+  font-size: 15px;
+  font-weight: 100;
+  color: white;
+}
+
+.comment {
+  font-family: "roboto";
+  font-size: 15px;
+  font-weight: 100;
+  color: white;
+}
+
+.count {
+  font-family: "roboto";
+  font-weight: 500;
+  font-size: 20px;
+  margin-top: 20px;
+  color: white;
+}
+
+.count1 {
+  font-family: "roboto medium";
+  font-weight: 500;
+  font-size:75px;
+  color: white;
+  margin-top: 20px;
+}
+
+.count2 {
+  font-family: "roboto Medium";
+  font-weight: 500;
+  font-size: 75px;
+  margin-top: 20px;
+}
+
+.count3 {
+  font-family: "roboto Medium";
+  font-weight: 500;
+  font-size: 75px;
+  margin-top: 20px;
+}

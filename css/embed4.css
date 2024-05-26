@@ -1,0 +1,29 @@
+body {
+  background-color: black;
+  font-family: "ubuntu medium";
+  color: white;
+}
+
+.pfp {
+  border-radius: 10px;
+  margin-top: 0px;
+  height: 80px;
+  width: 80px;
+  margin-left: 18px;
+}
+
+.name {
+  font-size: 70px;
+  color: white;
+  font-family: "open sans";
+  font-weight: 400;
+  margin-top: 0px;
+  margin-left: 0px;
+}
+
+.odometer {
+  font-size: 250px;
+  position: absolute;
+  font-family: "ubuntu medium";
+  margin-top: -45px;
+}

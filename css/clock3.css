@@ -1,0 +1,58 @@
+body {
+  background-color: black;
+  font-family: "roboto medium";
+  color: white;
+}
+
+.container {
+  text-align: center;
+}
+
+.Time {
+  text-align: center;
+  margin-left: -150px;
+  margin-top: -20px;
+}
+
+.text {
+  font-size: 50px;
+}
+
+.hours {
+  font-size: 120px;
+  margin-left: -370px;
+}
+
+.minutes {
+  position: absolute;
+  font-size: 120px;
+  margin-top: -164px;
+  margin-left: -80px;
+}
+
+.seconds {
+  position: absolute;
+  font-size: 120px;
+  margin-top: -163px;
+  margin-left: 90px;
+}
+
+.session {
+  position: absolute;
+  font-size: 120px;
+  margin-left: 250px;
+  margin-top: -163px;
+}
+
+.spacer1 {
+  font-size: 80px;
+  margin-top: -130px;
+  margin-left: -190px;
+}
+
+.spacer2{
+  font-size: 80px;
+  margin-top: -150px;
+  margin-left: 141px;
+}
+

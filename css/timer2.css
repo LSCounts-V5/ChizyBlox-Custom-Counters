@@ -1,0 +1,19 @@
+body {
+  font-family: "roboto medium";
+  color: white;
+  background-color: black;
+}
+
+.odometer {
+  font-size: 150px;
+  color: white;
+  padding: 50px;
+}
+
+.day {
+}
+
+.bottom {
+  font-size: 30px;
+  margin-top: 20px;
+}

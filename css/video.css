@@ -1,0 +1,87 @@
+body {
+  background-color: black;
+  color: white;
+  font-family: "roboto medium";
+}
+
+.video-background {
+  height: 720px;
+  width: 1280px;
+  filter: blur(0.3px)brightness(0.2);
+}
+.odometer {
+  font-family: "roboto medium";
+}
+
+.card1 {
+  margin-top: -35px;
+}
+
+.card2 {
+  margin-top: -35px;
+}
+
+.video-avatar {
+  height: 240px;
+  width: 420px;
+  border-radius: 40px;
+}
+
+.video-name {
+  font-family: "Roboto medium";
+  color: white;
+  font-size: 74px;
+  top: -15px;
+  margin-left: 30px;
+  overflow: hidden;
+  position: absolute;
+  border-radius: 20px;
+  height: 90px;
+  width: 120vw;
+}
+
+.views-icon {
+  position: absolute;
+  margin-top: 25px;
+}
+
+.views {
+  font-family: "ubuntu";
+  font-size: 70px;
+  color: rgb(255, 249, 164);
+  top: -10px;
+  margin-left: 5px;
+}
+
+.likes {
+  font-family: "ubuntu";
+  font-size: 70px;
+  color: #7f7;
+  margin-left: 5px;
+}
+
+.count {
+  font-family: "roboto";
+  font-weight: 500;
+  font-size: 90px;
+  color: white;
+  margin-top: -10px;
+  margin-left: 80px;
+}
+
+.count1 {
+  font-family: "roboto";
+  font-weight: 500;
+  font-size: 290px;
+  color: white;
+  top: -45px;
+  margin-left: 5px;
+}
+
+.count2 {
+  font-family: "roboto";
+  font-weight: 500;
+  font-size: 290px;
+  top: -15px;
+  margin-left: 5px;
+}

@@ -1,0 +1,73 @@
+body {
+  background-color: black;
+  font-family: "helvetica";
+  font-weight: 600;
+  color: white;
+}
+
+.card1 {
+  height: 250px;
+  width: 1200px;
+}
+
+.avatar1 {
+  height: 250px;
+  border-radius: 20px;
+  width: 250px;
+}
+
+.count1 {
+  font-size: 160px;
+  color: white;
+  margin-top: -50px;
+  margin-left: 265px;
+}
+
+.name1 {
+  font-size: 55px;
+  font-family: "helvetica";
+  font-weight: 600;
+  margin-top: -255px;
+  margin-left: 265px;
+  color: white;
+}
+
+
+.card2 {
+  height: 250px;
+  width: 1200px;
+}
+
+.avatar2 {
+  margin-top: 15px;
+  border-radius: 20px;
+  height: 250px;
+  width: 250px;
+}
+
+.name2{
+  font-size: 55px;
+  font-family: "helvetica";
+  font-weight: 600;
+  color: white;
+  margin-top: -250px;
+  margin-left: 265px;
+}
+
+.count2 {
+  font-size: 160px;
+  margin-top: -50px;
+  margin-left: 265px;
+}
+
+.battle {
+  font-size: 100px;
+  margin-top: -15px;
+}
+
+.a {
+  font-size: 30px;
+  font-family: "helvetica";
+  font-weight: 600;
+  margin-top: 50px;
+}
