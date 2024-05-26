@@ -1,0 +1,50 @@
+<html>
+  <head>
+    <title>user background</title>
+    <style>
+      body {
+        background-color: black;
+        font-family: "helvetica";
+        font-weight: 600;
+        color: white;
+      }
+
+      .background {
+        height: 850px;
+        width: 850px;
+        filter: blur(7px)brightness(0.3);
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <img  id="Background" class="background">
+    </div>
+  </body>
+
+  <script>
+     const urlParams = new URLSearchParams(window.location.search);
+    var id = urlParams.get("id") || "";
+    var count = 0;
+
+    fetch(`https://mixerno.space/api/youtube-channel-counter/user/${id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      document.getElementById("Background").src = data.user[1].count
+    });
+
+    function search() {
+  const prompt = window.prompt("Enter channel Name, ID, or URL.");
+  if (prompt) {
+    fetch(`https://livecounts.xyz/api/youtube-live-subscriber-count/search/${prompt}`)
+      .then((res) => res.json())
+      .then((data) => {
+        window.location.href = "?id=" + data.results[0].id;
+        idName = data.results[0].id;
+        genGraph();
+      });
+  }
+};
+  </script>
+</html>

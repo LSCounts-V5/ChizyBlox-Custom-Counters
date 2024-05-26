@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>User's Data</title>
+    <style>
+      body {
+        background-color: black;
+        font-family: "Helvetica";
+        font-weight: 600;
+        color: white;
+      }
+
+      .user-avatar {
+        height: 200px;
+        width: 200px;
+        border-radius: 20px;
+        margin-right: 30px;
+      }
+
+      .user-name {
+        position: absolute;
+        font-size: 75px;
+        color: white;
+        margin-top: 18px;
+      }
+
+      .user-handle {
+        font-size: 40px;
+        color: rgb(215,215,215);
+        position: absolute;
+        margin-left: 230px;
+        margin-top: -94px;
+      }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <img id="Avatar" class="user-avatar" alt="">
+      <span id="Name" class="user-name" onclick="search()">Loading</span>
+      <div>
+        <span id="Handle" class="user-handle">@loading</span>
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    var id = urlParams.get("id") || "";
+    var count = 0;
+
+    fetch(`https://mixerno.space/api/youtube-channel-counter/user/${id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      document.getElementById("Avatar").src = data.user[1].count
+    });
+    fetch(`https://nia-statistics.com/api/get?platform=youtube&type=channel&id=${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        document.getElementById("Name").textContent = data.snippet.title;
+        document.getElementById("Handle").textContent = data.snippet.handle;
+      });
+
+      function data() {
+        fetch(`https://nia-statistics.com/api/get?platform=youtube&type=channel&id=${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          count = data.estSubCount;
+          count2 = data.estViewCount;
+        });
+    }
+    function render() {
+      document.getElementById("count").innerHTML = count;
+    }
+
+    setInterval(() => {
+      data();
+    }, 2000);
+
+
+    function search() {
+  const prompt = window.prompt("Enter channel Name, ID, or URL.");
+  if (prompt) {
+    fetch(`https://livecounts.xyz/api/youtube-live-subscriber-count/search/${prompt}`)
+      .then((res) => res.json())
+      .then((data) => {
+        window.location.href = "?id=" + data.results[0].id;
+        idName = data.results[0].id;
+        genGraph();
+      });
+  }
+};
+  </script>
+</html>

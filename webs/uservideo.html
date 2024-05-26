@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <title>user video</title>
+    <script src="https://code.iconify.design/iconify-icon/2.1.0/iconify-icon.min.js"></script>
+    <link href="../odometer.css" rel="stylesheet">
+    <script src="../odometer.js"></script>
+    <style>
+      body {
+        background-color: black;
+        font-family: "helvetica";
+        font-weight: 600;
+        color: white;
+      }
+
+      .thumbnail{
+        height: 90px;
+        width: 150px;
+        border-radius: 20px;
+        margin-right: 20px ;
+      }
+
+      .name {
+        position: absolute;
+        color: white;
+        font-size: 25px;
+        overflow: hidden;
+        width: 800px;
+        height: 30px;
+        margin-top: 15px;
+      }
+
+      .vidby {
+        position: absolute;
+        font-size: 15px;
+        color: rgb(150,150,150);
+        margin-left: 170px;
+        margin-top: -50px;
+      }
+
+      .footer1 {
+        font-size: 25px;
+        margin-top: 10px;
+        color: rgb(255, 255, 100);
+      }
+
+      .viewcount {
+        position: absolute;
+        font-size: 85px;
+        margin-top: -20px;
+      }
+
+      .footer2 {
+        font-size: 25px;
+        margin-top: 0px;
+        color: rgb(100, 255, 100);
+      }
+
+       .likecount {
+        position: absolute;
+        font-size: 85px;
+        margin-top: -20px;
+       }
+
+       .background {
+        filter: blur(5px)brightness(0.4);
+        height: 480px;
+        width: 854px;
+        padding: -10px;
+        padding-top: -20px;
+        padding-bottom: -20px;
+        padding-right: -20px;
+        padding-left: -20px;
+       }
+    </style>
+  </head>
+
+  <body>
+    <div>
+      <img id="Avatar" class="thumbnail" alt="">
+      <span id="VideoName" class="name">Loading Name</span>
+      <div>
+        <h1 class="vidby">Video By:<span id="VideoBy" style="margin-left: 5px;">Loading...</span><iconify-icon icon="logos:youtube-icon" style="position: absolute; margin-top: 2.2px; margin-left: 5px;"></iconify-icon></h1>
+      </div>
+    </div>
+    <div>
+      <div>
+        <h1 class="footer1">Views</h1>
+        <span id="ViewCount" class="odometer viewcount">0</span>
+      </div>
+      <div>
+        <h1 class="footer2">Likes</h1>
+        <span id="LikeCount" class="odometer likecount">0</span>
+      </div>
+      <div>
+        <img id="Background" class="background" alt="">
+      </div>
+    </div>
+  </body>
+
+  <script>
+    const urlParams = new URLSearchParams(window.location.search);
+    var id = urlParams.get("id") || "";
+    var count = 0;
+
+    fetch(`https://mixerno.space/api/youtube-video-counter/user/${id}`)
+    .then((res) => res.json())
+    .then((data) => {
+      document.getElementById("Avatar").src = data.user[1].count
+      document.getElementById("Background").src = data.user[1].count
+    });
+    fetch(`https://nia-statistics.com/api/get?platform=youtube&type=video&id=${id}`)
+      .then((res) => res.json())
+      .then((data) => {
+        document.getElementById("VideoName").textContent = data.snippet.title;
+        document.getElementById("VideoBy").textContent = data.snippet.channelTitle;
+      });
+
+      function data() {
+        fetch(`https://nia-statistics.com/api/get?platform=youtube&type=video&id=${id}`)
+        .then((res) => res.json())
+        .then((data) => {
+          console.log(data);
+          count = data.estViewCount;
+          count2 = data.total.likes;
+        });
+    }
+    function render() {
+      document.getElementById("ViewCount").innerHTML = count;
+      document.getElementById("LikeCount").innerHTML = count2;
+    }
+
+    setInterval(() => {
+      data();
+      render();
+    }, 2000);
+
+
+    function search() {
+  const prompt = window.prompt("Enter channel Name, ID, or URL.");
+  if (prompt) {
+    fetch(`https://livecounts.xyz/api/youtube-live-subscriber-count/search/${prompt}`)
+      .then((res) => res.json())
+      .then((data) => {
+        window.location.href = "?id=" + data.results[0].id;
+        idName = data.results[0].id;
+        genGraph();
+      });
+  }
+};
+  </script>
+</html>
